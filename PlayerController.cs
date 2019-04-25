@@ -7,14 +7,16 @@ public class PlayerController : MonoBehaviour{
 
     public float playerSpeed;
     public float jumpSpeed;
-
+    private Rigidbody2D rb;
     private bool isJumping;
     private float move;
-    private Rigidbody2D rb;
+    public GameObject Button, Text;
 
     private void Start(){
-
         rb = GetComponent<Rigidbody2D>();
+
+        Button.SetActive(false);
+        Text.SetActive(false);
     }
 
     private void Update(){    
@@ -51,10 +53,12 @@ public class PlayerController : MonoBehaviour{
 
         if(collision.tag== "spike"){
 
-            Scene scene;
-            scene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(scene.name);
-         
+            Text.SetActive(true);
+            Button.SetActive(true);
+            gameObject.SetActive(false);
+
         }
     }
+
+
 }
